@@ -43,4 +43,13 @@ describe('Search component', () => {
         expect(screen.getByRole('textbox')).toHaveClass('filled')
         expect(screen.getByText('Search')).toHaveClass('label')
     })
+    it('Search snapshot', () => {
+        const search = render(
+            <Search value='' onChange={onChange}>
+                Find:
+            </Search>
+        )
+
+        expect(search).toMatchSnapshot()
+    })
 })

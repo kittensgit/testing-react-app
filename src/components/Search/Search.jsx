@@ -1,4 +1,6 @@
 import React from 'react'
+import classes from './Search.module.css'
+import cn from 'classnames'
 
 const Search = (props) => {
 
@@ -9,14 +11,20 @@ const Search = (props) => {
         placeholder = 'Search...'
     } = props
 
+    const inputClass = cn({
+        [classes.input]: true,
+        [classes.filled]: value.length
+    })
+
     return (
-        <label>
+        <label className={classes.label}>
             {children}
-            <input 
-            type='text'
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
+            <input
+                className={inputClass}
+                type='text'
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
             />
         </label>
     )

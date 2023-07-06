@@ -30,10 +30,17 @@ describe('Search component', () => {
     it('onChange works', () => {
         render(
             <Search value='' onChange={onChange}>
-                Find: 
+                Find:
             </Search>
         )
         userEvent.type(screen.getByRole('textbox'), 'React')
         expect(onChange).toHaveBeenCalledTimes(5)
+    })
+    it('dinamic styles works', () => {
+        render(<Search value='abc' onChange={onChange} />)
+
+        expect(screen.getByRole('textbox')).toHaveClass('input')
+        expect(screen.getByRole('textbox')).toHaveClass('filled')
+        expect(screen.getByText('Search')).toHaveClass('label')
     })
 })
